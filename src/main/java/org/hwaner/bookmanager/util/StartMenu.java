@@ -36,10 +36,9 @@ public class StartMenu {
                         case 3:
                             System.out.println(Print.EXIT_MENT);
                             for (String num : Arrays.asList("3", "2", "1")) {
-                                Thread.sleep(1000);
                                 System.out.println(num);
+                                Thread.sleep(1000);
                             }
-                            Thread.sleep(1000);
                             System.out.println(Print.EXIT);
                             smallRun = false;
                             bigRun = false;
@@ -75,10 +74,9 @@ public class StartMenu {
                         case 6:
                             System.out.println(Print.EXIT_MENT);
                             for (String num : Arrays.asList("3", "2", "1")) {
-                                Thread.sleep(1000);
                                 System.out.println(num);
+                                Thread.sleep(1000);
                             }
-                            Thread.sleep(1000);
                             System.out.println(Print.EXIT);
                             smallRun = false;
                             bigRun = false;
@@ -108,10 +106,9 @@ public class StartMenu {
                         case 4:
                             System.out.println(Print.EXIT_MENT);
                             for (String num : Arrays.asList("3", "2", "1")) {
-                                Thread.sleep(1000);
                                 System.out.println(num);
+                                Thread.sleep(1000);
                             }
-                            Thread.sleep(1000);
                             System.out.println(Print.EXIT);
                             smallRun = false;
                             bigRun = false;

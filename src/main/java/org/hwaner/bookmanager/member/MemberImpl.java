@@ -92,10 +92,9 @@ public class MemberImpl implements Member {
 
         System.out.println(Print.SIGNOUT_MENT);
         for (String num : Arrays.asList("3", "2", "1")) {
-            Thread.sleep(1000);
             System.out.println(num);
+            Thread.sleep(1000);
         }
-        Thread.sleep(1000);
         memberVO = null;
         System.out.println(Print.SIGNOUT);
     }
