@@ -112,8 +112,8 @@ public class MemberImpl implements Member {
         System.out.println(Print.SHOWALLOFMEMBER);
 
         for (MemberVO vo : memberList) {
-            System.out.println("ID: " + vo.getId() + "\t| "
-                    + "Password: "+ vo.getPw() + "\t| " + vo.getName());
+            System.out.println("ID: " + vo.getId() + "\t|"
+                    + "Password: "+ vo.getPw() + "\t|" + vo.getName());
         }
         System.out.println(Print.COMPLETE);
         Thread.sleep(2000);

@@ -146,9 +146,9 @@ public class BookImpl implements Book {
 
             String key = itr.next();
             BookVO value = bookMap.get(key);
-            System.out.println(key + " | " + value.getBookTitle() + " | "
-                    + value.getBookPublisher() + " | " + value.getBookAuthor() + " | "
-                    + "수량: " + value.getQty());
+            System.out.println("ID: " + key + "\t|" + "Title: " + value.getBookTitle()
+                    + "\t|" + "Publisher: " + value.getBookPublisher() + "\t|"
+                    + "Author: " + value.getBookAuthor() + "\t|" + "Qty: " + value.getQty());
         }
         System.out.println(Print.COMPLETE);
         Thread.sleep(2000);
