@@ -124,10 +124,9 @@ public class BookImpl implements Book {
             String key = itr.next();
             BookVO value = bookMap.get(key);
             if (bookTitle.equals(value.getBookTitle())) {
-                bookMap.remove(key);
-                value.setQty(value.getQty() - 1);
+                itr.remove();
                 System.out.println(Print.COMPLETE);
-                Thread.sleep(2000);
+                Thread.sleep(1500);
             }
         }
     }
