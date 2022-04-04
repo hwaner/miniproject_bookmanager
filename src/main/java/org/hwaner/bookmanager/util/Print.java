@@ -8,7 +8,7 @@ public class Print {
     public static final String MENU_ROOT2 = "[ 1.회원목록 | 2.도서목록 | 3.도서등록 | 4.도서삭제 | 5.회원목록 저장 | 6.도서목록 저장 | 7.로그아웃 | 8.종료 ] ➤ ";
     public static final String MENU_GENERAL1 = "[ 회원님 ㅎㅇ ]\n";
     public static final String MENU_GENERAL2 = "[ 1.대여 | 2.반납 | 3.로그아웃 | 4.종료 ] ➤ ";
-    public static final String EXIT_MENT = "\n♦♦♦♦♦♦♦♦♦♦ 3초 뒤 종료됩니다 ♦♦♦♦♦♦♦♦♦♦";
+    public static final String EXIT_MENT = "\n♦♦♦♦♦♦♦♦♦♦ 3초 뒤 종료됩니다 ♦♦♦♦♦♦♦♦♦♦\n";
     public static final String EXIT = "\n♦♦♦♦♦♦♦♦♦♦ 종료 ♦♦♦♦♦♦♦♦♦♦\n";
     public static final String COMPLETE = "\n♦♦♦♦♦♦♦♦♦♦ 요청이 완료되었습니다 ♦♦♦♦♦♦♦♦♦♦\n";
     public static final String COMPLETESIGNIN = "\n♦♦♦♦♦♦♦♦♦♦ 로그인 성공 ♦♦♦♦♦♦♦♦♦♦\n";
