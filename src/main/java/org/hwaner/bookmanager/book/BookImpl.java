@@ -128,9 +128,6 @@ public class BookImpl implements Book {
                 value.setQty(value.getQty() - 1);
                 System.out.println(Print.COMPLETE);
                 Thread.sleep(2000);
-            } else {
-                System.out.println(Print.NOTCORRESPOND);
-                Thread.sleep(2000);
             }
         }
     }
