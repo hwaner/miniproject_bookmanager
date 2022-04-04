@@ -20,11 +20,11 @@ public class BookImpl implements Book {
     Scanner sc = new Scanner(System.in);
 
     @Override
-    public void borrowBook() {
+    public void borrowBook() throws InterruptedException {
 
         System.out.println(Print.BORROWBOOK);
 
-        System.out.println(Print.BOOK_TITLE);
+        System.out.print(Print.BOOK_TITLE);
         String bookTitle = sc.nextLine();
 
         Iterator<String> itr = bookMap.keySet().iterator();
@@ -40,8 +40,8 @@ public class BookImpl implements Book {
                 }
                 vo.setQty(vo.getQty() - 1);
 
-                System.out.println(ptr + "\t");
-                System.out.println(vo.getBookTitle() + "|");
+                System.out.println(Print.COMPLETE);
+                Thread.sleep(1500);
 
                 vo.setBorrowed(true);
             }

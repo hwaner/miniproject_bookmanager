@@ -2,7 +2,7 @@ package org.hwaner.bookmanager.book;
 
 public interface Book {
 
-    public void borrowBook();
+    public void borrowBook() throws InterruptedException;
     public void returnBook();
     public void insertBook() throws InterruptedException;
     public void deleteBook() throws InterruptedException;
