@@ -21,8 +21,8 @@ public class Print {
     public static final String DUPLICATE = "\n♦♦♦♦♦♦♦♦♦♦ 중복된 정보입니다 ♦♦♦♦♦♦♦♦♦♦\n";
     public static final String NOTCORRESPOND = "♦♦♦♦♦♦♦♦♦♦ 일치하는 정보가 없습니다 ♦♦♦♦♦♦♦♦♦♦\n";
     public static final String SIGNIN = "\n♦♦♦♦♦♦♦♦♦♦ 로그인 ♦♦♦♦♦♦♦♦♦♦\n";
-    public static final String SIGNOUT_MENT = "\n♦♦♦♦♦♦♦♦♦♦ 3초 뒤 로그아웃됩니다 ♦♦♦♦♦♦♦♦♦♦";
-    public static final String SIGNOUT = "♦♦♦♦♦♦♦♦♦♦ 로그아웃 ♦♦♦♦♦♦♦♦♦♦\n";
+    public static final String SIGNOUT_MENT = "\n♦♦♦♦♦♦♦♦♦♦ 3초 뒤 로그아웃됩니다 ♦♦♦♦♦♦♦♦♦♦\n";
+    public static final String SIGNOUT = "\n♦♦♦♦♦♦♦♦♦♦ 로그아웃 ♦♦♦♦♦♦♦♦♦♦\n";
     public static final String SHOWALLOFMEMBER = "\n♦♦♦♦♦♦♦♦♦♦ 회원목록 조회 ♦♦♦♦♦♦♦♦♦♦\n";
     public static final String INSERTBOOK = "\n♦♦♦♦♦♦♦♦♦♦ 신규도서 등록 ♦♦♦♦♦♦♦♦♦♦\n";
     public static final String INSERTBOOKQTY = "♦♦♦♦♦♦♦♦♦♦ 해당도서의 수량을 추가합니다 ♦♦♦♦♦♦♦♦♦♦\n";
