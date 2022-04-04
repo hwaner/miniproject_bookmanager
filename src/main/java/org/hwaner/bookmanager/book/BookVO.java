@@ -8,6 +8,7 @@ public class BookVO {
     private boolean borrowed;
     private int qty;
 
+
     public String getBookTitle() {
         return bookTitle;
     }

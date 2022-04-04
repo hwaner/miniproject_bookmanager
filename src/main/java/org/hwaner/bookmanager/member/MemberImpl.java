@@ -24,6 +24,7 @@ public class MemberImpl implements Member {
     public MemberImpl() {
 
         MemberVO vo = new MemberVO();
+
         vo.setId(Member.ADMIN_ID);
         vo.setPw(Member.ADMIN_PW);
         vo.setName(Member.ADMIN_NAME);
@@ -48,7 +49,6 @@ public class MemberImpl implements Member {
 
         return memberVO;
     }
-
 
     @Override
     public void signUp() {
@@ -107,20 +107,22 @@ public class MemberImpl implements Member {
     }
 
     @Override
-    public void printMemberList() {
+    public void printMemberList() throws InterruptedException {
 
         System.out.println(Print.SHOWALLOFMEMBER);
 
         for (MemberVO vo : memberList) {
-            System.out.print(vo.getId() + "\t|");
-            System.out.println(vo.getName());
+            System.out.println("ID: " + vo.getId() + "\t| "
+                    + "Password: "+ vo.getPw() + "\t| " + vo.getName());
         }
         System.out.println(Print.COMPLETE);
+        Thread.sleep(2000);
     }
 
     @Override
-    public void writeMemberList() {
+    public void writeMemberList() throws InterruptedException {
 
+        System.out.println(Print.PRINTEXCEL);
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet();
         HSSFRow row = sheet.createRow(0);
@@ -172,5 +174,10 @@ public class MemberImpl implements Member {
                 e.printStackTrace();
             }
         }
+        for (String num : Arrays.asList("3", "2", "1")) {
+            System.out.println(num);
+            Thread.sleep(1000);
+        }
+        System.out.println(Print.COMPLETE);
     }
 }

@@ -4,9 +4,8 @@ public interface Book {
 
     public void borrowBook();
     public void returnBook();
-    public void insertBook();
-    public void deleteBook();
-    public void printBookList();
-//    public void searchBook();
-//    public void updateBook();
+    public void insertBook() throws InterruptedException;
+    public void deleteBook() throws InterruptedException;
+    public void printBookList() throws InterruptedException;
+    public void writeBookList() throws InterruptedException;
 }

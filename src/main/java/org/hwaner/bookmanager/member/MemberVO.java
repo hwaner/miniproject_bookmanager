@@ -29,5 +29,4 @@ public class MemberVO {
     public void setName(String name) {
         this.name = name;
     }
-
 }

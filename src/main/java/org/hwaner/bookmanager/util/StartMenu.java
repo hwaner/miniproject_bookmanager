@@ -61,9 +61,13 @@ public class StartMenu {
                         case 4:
                             bookImpl.deleteBook(); break;
                         case 5:
+                            memberImpl.writeMemberList(); break;
+                        case 6:
+                            bookImpl.writeBookList(); break;
+                        case 7:
                             memberImpl.singOut();
                             smallRun = false; break;
-                        case 6:
+                        case 8:
                             System.out.println(Print.EXIT_MENT);
                             for (String num : Arrays.asList("3", "2", "1")) {
                                 System.out.println(num);
@@ -72,8 +76,6 @@ public class StartMenu {
                             System.out.println(Print.EXIT);
                             smallRun = false;
                             bigRun = false; break;
-                        case 7:
-                            MemberImpl.writeMemberList(); break;
                         default:
                             System.out.println(Print.INPUTERROR);
                             Thread.sleep(1000);

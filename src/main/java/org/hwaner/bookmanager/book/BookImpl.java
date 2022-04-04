@@ -1,15 +1,21 @@
 package org.hwaner.bookmanager.book;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.hwaner.bookmanager.member.MemberVO;
 import org.hwaner.bookmanager.util.Print;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.*;
 
 public class BookImpl implements Book {
 
-    Map<String, BookVO> map = new HashMap<>();
+    Map<String, BookVO> bookMap = new HashMap<>();
 
     Scanner sc = new Scanner(System.in);
 
@@ -21,11 +27,11 @@ public class BookImpl implements Book {
         System.out.println(Print.BOOK_TITLE);
         String bookTitle = sc.nextLine();
 
-        Iterator<String> itr = map.keySet().iterator();
+        Iterator<String> itr = bookMap.keySet().iterator();
 
         while (itr.hasNext()) {
             String ptr = itr.next();
-            BookVO vo = map.get(ptr);
+            BookVO vo = bookMap.get(ptr);
 
             if (vo.getBookTitle().startsWith(bookTitle)) {
                 if (vo.isBorrowed()) {
@@ -50,11 +56,11 @@ public class BookImpl implements Book {
         System.out.println(Print.BOOK_TITLE);
         String bookTitle = sc.nextLine();
 
-        Iterator<String> itr = map.keySet().iterator();
+        Iterator<String> itr = bookMap.keySet().iterator();
 
         while (itr.hasNext()) {
             String key = itr.next();
-            BookVO value = map.get(key);
+            BookVO value = bookMap.get(key);
 
             if (bookTitle.equals(value.getBookTitle())) {
                 if (value.isBorrowed()) {
@@ -68,7 +74,7 @@ public class BookImpl implements Book {
     }
 
     @Override
-    public void insertBook() {
+    public void insertBook() throws InterruptedException {
 
         System.out.println(Print.INSERTBOOK);
 
@@ -77,15 +83,18 @@ public class BookImpl implements Book {
 
         System.out.print(Print.BOOK_INDEX);
         idx = sc.nextLine();//iterator
-        if (map.containsKey(idx)) {
+        if (bookMap.containsKey(idx)) {
             System.out.println(Print.DUPLICATE);
+            Thread.sleep(1000);
             System.out.println(Print.INSERTBOOKQTY);
-            BookVO value = map.get(idx);
+            Thread.sleep(2000);
+
+            BookVO value = bookMap.get(idx);
             vo.setBookTitle(value.getBookTitle());
             vo.setBookPublisher(value.getBookPublisher());
             vo.setBookAuthor(value.getBookAuthor());
             vo.setQty(value.getQty() + 1);
-            map.put(idx, vo);
+            bookMap.put(idx, vo);
             return;
         }
         System.out.print(Print.BOOK_TITLE);
@@ -97,44 +106,121 @@ public class BookImpl implements Book {
 
         vo.setQty(vo.getQty() + 1);
 
-        map.put(idx, vo);
+        bookMap.put(idx, vo);
         System.out.println(Print.COMPLETE);
 
     }
 
     @Override
-    public void deleteBook() {
+    public void deleteBook() throws InterruptedException {
 
         System.out.println(Print.DELETEBOOK);
         System.out.print(Print.BOOK_TITLE);
         String bookTitle = sc.nextLine();
 
-        Iterator<String> itr = map.keySet().iterator();
+        Iterator<String> itr = bookMap.keySet().iterator();
 
         while (itr.hasNext()) {
             String key = itr.next();
-            BookVO value = map.get(key);
+            BookVO value = bookMap.get(key);
             if (bookTitle.equals(value.getBookTitle())) {
-                map.remove(key);
+                bookMap.remove(key);
                 value.setQty(value.getQty() - 1);
                 System.out.println(Print.COMPLETE);
+                Thread.sleep(2000);
+            } else {
+                System.out.println(Print.NOTCORRESPOND);
+                Thread.sleep(2000);
             }
         }
     }
 
     @Override
-    public void printBookList() {
+    public void printBookList() throws InterruptedException {
 
         System.out.println(Print.SHOWALLOFBOOK);
 
-        Iterator<String> itr = map.keySet().iterator();
+        Iterator<String> itr = bookMap.keySet().iterator();
 
         while (itr.hasNext()) {
+
             String key = itr.next();
-            BookVO value = map.get(key);
+            BookVO value = bookMap.get(key);
             System.out.println(key + " | " + value.getBookTitle() + " | "
                     + value.getBookPublisher() + " | " + value.getBookAuthor() + " | "
                     + "수량: " + value.getQty());
+        }
+        System.out.println(Print.COMPLETE);
+        Thread.sleep(2000);
+    }
+
+    @Override
+    public void writeBookList() throws InterruptedException {
+
+        System.out.println(Print.PRINTEXCEL);
+        HSSFWorkbook workbook = new HSSFWorkbook();
+        HSSFSheet sheet = workbook.createSheet();
+        HSSFRow row = sheet.createRow(0);
+        HSSFCell cell;
+
+        // 인덱스 구성
+        cell = row.createCell(0);
+        cell.setCellValue("ID");
+        cell = row.createCell(1);
+        cell.setCellValue("Title");
+        cell = row.createCell(2);
+        cell.setCellValue("Publisher");
+        cell = row.createCell(3);
+        cell.setCellValue("Author");
+        cell = row.createCell(4);
+        cell.setCellValue("Qty");
+
+        Iterator<String> itr = bookMap.keySet().iterator();
+        int rowIdx = 1;
+        while (itr.hasNext()) {
+
+            String key = itr.next();
+            BookVO value = bookMap.get(key);
+
+            row = sheet.createRow(rowIdx);
+
+            cell = row.createCell(0);
+            cell.setCellValue(key);
+            cell = row.createCell(1);
+            cell.setCellValue(value.getBookTitle());
+            cell = row.createCell(2);
+            cell.setCellValue(value.getBookPublisher());
+            cell = row.createCell(3);
+            cell.setCellValue(value.getBookAuthor());
+            cell = row.createCell(4);
+            cell.setCellValue(value.getQty());
+
+            rowIdx++;
+        }
+
+        // 파일로 저장
+        File file = new File("/Users/hwan/Documents/workspace/" +
+                "projects/miniprojects/bookmanager/excel/bookList.xls");
+        FileOutputStream fos = null;
+
+        try {
+            fos = new FileOutputStream(file);
+            workbook.write(fos);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (workbook != null) workbook.close();
+                if (fos != null) fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        for (String num : Arrays.asList("3", "2", "1")) {
+            System.out.println(num);
+            Thread.sleep(1000);
         }
         System.out.println(Print.COMPLETE);
     }

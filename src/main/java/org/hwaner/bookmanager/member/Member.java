@@ -9,9 +9,6 @@ public interface Member {
     public void signUp();
     public void signIn();
     public void singOut() throws InterruptedException;
-    public void printMemberList();
-    public void writeMemberList();
-
-//    public void searchMember();
-//    public void deleteMember();
+    public void printMemberList() throws InterruptedException;
+    public void writeMemberList() throws InterruptedException;
 }
