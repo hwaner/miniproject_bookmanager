@@ -9,9 +9,9 @@ import java.util.Scanner;
 
 public class BookImpl implements Book {
 
-    Scanner sc = new Scanner(System.in);
-
     Map<String, BookVO> map = new HashMap<>();
+
+    Scanner sc = new Scanner(System.in);
 
     @Override
     public void borrowBook() {
@@ -76,7 +76,7 @@ public class BookImpl implements Book {
         String idx;
 
         System.out.print(Print.BOOK_INDEX);
-        idx = sc.nextLine();
+        idx = sc.nextLine();//iterator
         if (map.containsKey(idx)) {
             System.out.println(Print.DUPLICATE);
             System.out.println(Print.INSERTBOOKQTY);

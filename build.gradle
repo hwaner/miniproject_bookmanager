@@ -12,6 +12,12 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    // xls 엑셀 파일 읽기 쓰기
+    implementation 'org.apache.poi:poi:5.2.2'
+    // xlsx 엑셀 파일 읽기 쓰기
+    implementation 'org.apache.poi:poi-oomxl:5.2.2'
+
 }
 
 test {

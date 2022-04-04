@@ -1,17 +1,25 @@
 package org.hwaner.bookmanager.member;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.hwaner.bookmanager.util.Print;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class MemberImpl implements Member {
 
-    Scanner sc = new Scanner(System.in);
-
     private ArrayList<MemberVO> memberList = new ArrayList<>();
     private MemberVO memberVO;
+
+    Scanner sc = new Scanner(System.in);
 
     public MemberImpl() {
 
@@ -20,7 +28,6 @@ public class MemberImpl implements Member {
         vo.setPw(Member.ADMIN_PW);
         vo.setName(Member.ADMIN_NAME);
         memberList.add(vo);
-
     }
 
     /********** 중복검사 **********/
@@ -105,9 +112,65 @@ public class MemberImpl implements Member {
         System.out.println(Print.SHOWALLOFMEMBER);
 
         for (MemberVO vo : memberList) {
-            System.out.print(vo.getId() + " | ");
+            System.out.print(vo.getId() + "\t|");
             System.out.println(vo.getName());
         }
         System.out.println(Print.COMPLETE);
+    }
+
+    @Override
+    public void writeMemberList() {
+
+        HSSFWorkbook workbook = new HSSFWorkbook();
+        HSSFSheet sheet = workbook.createSheet();
+        HSSFRow row = sheet.createRow(0);
+        HSSFCell cell;
+
+        // 인덱스 구성
+        cell = row.createCell(0);
+        cell.setCellValue("ID");
+        cell = row.createCell(1);
+        cell.setCellValue("Password");
+        cell = row.createCell(2);
+        cell.setCellValue("Name");
+
+        // size만큼 row를 생성하고 입력
+        for (MemberVO vo : memberList) {
+
+            for (int rowIdx = 0; rowIdx < memberList.size(); rowIdx++) {
+
+                vo = memberList.get(rowIdx);
+
+                row = sheet.createRow(rowIdx + 1);
+
+                cell = row.createCell(0);
+                cell.setCellValue(vo.getId());
+                cell = row.createCell(1);
+                cell.setCellValue(vo.getPw());
+                cell = row.createCell(2);
+                cell.setCellValue(vo.getName());
+            }
+        }
+
+        // 파일로 저장
+        File file = new File("/Users/hwan/Documents/workspace/" +
+                "projects/miniprojects/bookmanager/excel/memberList.xls");
+        FileOutputStream fos = null;
+
+        try {
+            fos = new FileOutputStream(file);
+            workbook.write(fos);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (workbook != null) workbook.close();
+                if (fos != null) fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

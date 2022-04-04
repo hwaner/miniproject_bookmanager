@@ -5,7 +5,7 @@ public class Print {
     public static final String WELCOME = "\n︎[ 허접한 도서관리시스템에 오신 것을 환영합니다 ♥ ]︎\n";
     public static final String MENU_START = "[ 1.로그인 | 2.회원가입 | 3.종료 ] ➤ ";
     public static final String MENU_ROOT1 = "[ 관리자님 반가워요 !!! ]";
-    public static final String MENU_ROOT2 = "[ 1.회원목록 | 2.도서목록 | 3.도서등록 | 4.도서삭제 | 5.로그아웃 | 6.종료 ] ➤ ";
+    public static final String MENU_ROOT2 = "[ 1.회원목록 | 2.도서목록 | 3.도서등록 | 4.도서삭제 | 5.로그아웃 | 6.종료 | 7.회원목록 저장 ] ➤ ";
     public static final String MENU_GENERAL1 = "[ 회원님 반가워요 !!! ]";
     public static final String MENU_GENERAL2 = "[ 1.대여 | 2.반납 | 3.로그아웃 | 4.종료 ] ➤ ";
     public static final String EXIT_MENT = "♦♦♦♦♦♦♦♦♦♦ 3초 뒤 종료됩니다 ♦♦♦♦♦♦♦♦♦♦";

@@ -28,11 +28,9 @@ public class StartMenu {
                     switch (menuNum) {
                         case 1:
                             memberImpl.signIn();
-                            smallRun = false;
-                            break;
+                            smallRun = false; break;
                         case 2:
-                            memberImpl.signUp();
-                            break;
+                            memberImpl.signUp(); break;
                         case 3:
                             System.out.println(Print.EXIT_MENT);
                             for (String num : Arrays.asList("3", "2", "1")) {
@@ -41,8 +39,7 @@ public class StartMenu {
                             }
                             System.out.println(Print.EXIT);
                             smallRun = false;
-                            bigRun = false;
-                            break;
+                            bigRun = false; break;
                         default:
                             System.out.println(Print.INPUTERROR);
                             Thread.sleep(1000);
@@ -56,21 +53,16 @@ public class StartMenu {
                     menuNum = sc.nextInt();
                     switch (menuNum) {
                         case 1:
-                            memberImpl.printMemberList();
-                            break;
+                            memberImpl.printMemberList(); break;
                         case 2:
-                            bookImpl.printBookList();
-                            break;
+                            bookImpl.printBookList(); break;
                         case 3:
-                            bookImpl.insertBook();
-                            break;
+                            bookImpl.insertBook(); break;
                         case 4:
-                            bookImpl.deleteBook();
-                            break;
+                            bookImpl.deleteBook(); break;
                         case 5:
                             memberImpl.singOut();
-                            smallRun = false;
-                            break;
+                            smallRun = false; break;
                         case 6:
                             System.out.println(Print.EXIT_MENT);
                             for (String num : Arrays.asList("3", "2", "1")) {
@@ -79,8 +71,9 @@ public class StartMenu {
                             }
                             System.out.println(Print.EXIT);
                             smallRun = false;
-                            bigRun = false;
-                            break;
+                            bigRun = false; break;
+                        case 7:
+                            MemberImpl.writeMemberList(); break;
                         default:
                             System.out.println(Print.INPUTERROR);
                             Thread.sleep(1000);
@@ -94,15 +87,12 @@ public class StartMenu {
                     menuNum = sc.nextInt();
                     switch (menuNum) {
                         case 1:
-                            bookImpl.borrowBook();
-                            break;
+                            bookImpl.borrowBook(); break;
                         case 2:
-                            bookImpl.returnBook();
-                            break;
+                            bookImpl.returnBook(); break;
                         case 3:
                             memberImpl.singOut();
-                            smallRun = false;
-                            break;
+                            smallRun = false; break;
                         case 4:
                             System.out.println(Print.EXIT_MENT);
                             for (String num : Arrays.asList("3", "2", "1")) {
@@ -111,8 +101,7 @@ public class StartMenu {
                             }
                             System.out.println(Print.EXIT);
                             smallRun = false;
-                            bigRun = false;
-                            break;
+                            bigRun = false; break;
                         default:
                             System.out.println(Print.INPUTERROR);
                             Thread.sleep(1000);
