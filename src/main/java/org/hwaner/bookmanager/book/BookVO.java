@@ -2,7 +2,7 @@ package org.hwaner.bookmanager.book;
 
 import org.hwaner.bookmanager.member.MemberImpl;
 
-public class BookVO extends MemberImpl {
+public class BookVO {
 
     private String bookTitle;
     private String bookPublisher;
